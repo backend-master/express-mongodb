@@ -3,6 +3,9 @@ const cors = require("cors");
 const bodyParser = require("body-parser");
 const PORT = process.env.PORT || 3000;
 
+// Database Connetion
+require("./configs/db");
+
 const app = express();
 
 app.use(cors());
@@ -14,6 +17,10 @@ app.get("/", (req, res) => {
     msg: "Learning Express with NoSql (MongoDB)"
   });
 });
+
+const userRoute = require("./routes/users");
+
+app.use("/api/v1/users", userRoute);
 
 app.listen(PORT, () => {
   console.log(`Server running at server => ${PORT}`);
