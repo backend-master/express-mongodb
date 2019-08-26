@@ -9,6 +9,12 @@ app.use(cors());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
+app.get("/", (req, res) => {
+  res.status(200).json({
+    msg: "Learning Express with NoSql (MongoDB)"
+  });
+});
+
 app.listen(PORT, () => {
   console.log(`Server running at server => ${PORT}`);
 });
