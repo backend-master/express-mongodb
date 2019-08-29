@@ -92,5 +92,33 @@ module.exports = {
         data: []
       });
     }
+  },
+
+  deleteUserById: async (req, res) => {
+    try {
+      const id = req.params.id;
+
+      await User.findByIdAndRemove(id, (err, result) => {
+        if (err) {
+          return res.status(500).json({
+            err: true,
+            errMessage: err,
+            data: []
+          });
+        } else {
+          return res.status(200).json({
+            err: false,
+            errMessage: null,
+            data: result
+          });
+        }
+      });
+    } catch (err) {
+      res.status(500).json({
+        err: true,
+        errMessage: err,
+        data: []
+      });
+    }
   }
 };
