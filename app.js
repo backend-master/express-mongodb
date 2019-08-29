@@ -19,8 +19,10 @@ app.get("/", (req, res) => {
 });
 
 const userRoute = require("./routes/users");
+const bookRoute = require("./routes/books");
 
 app.use("/api/v1/users", userRoute);
+app.use("/api/v1/books", bookRoute);
 
 app.listen(PORT, () => {
   console.log(`Server running at server => ${PORT}`);
